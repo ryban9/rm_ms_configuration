@@ -35,3 +35,14 @@ management:
     health:
       probes:
         enabled: true
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
+  instance:
+    prefer-ip-address: true
+
+springdoc:
+  paths-to-match: /api/v1/**

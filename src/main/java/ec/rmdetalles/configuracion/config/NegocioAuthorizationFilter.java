@@ -112,4 +112,10 @@ public class NegocioAuthorizationFilter extends OncePerRequestFilter {
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write("{\"status\":" + status + ",\"detail\":\"" + mensaje + "\"}");
     }
-}
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getRequestURI();
+        return path.equals("/v3/api-docs") || path.startsWith("/v3/api-docs/")
+                || path.equals("/v3/api-docs.yaml");
+    }}
